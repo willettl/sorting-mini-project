@@ -1,9 +1,9 @@
 import java.util.Comparator;
 
 /**
- * Sort using insertion sort.
+ * Sort through an array using insertion sort.
  *
- * @author Your Name Here
+ * @author Lucas Willett, Sam R
  */
 
 public class InsertionSort implements Sorter {
@@ -33,6 +33,20 @@ public class InsertionSort implements Sorter {
 
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
-    // STUB
-  } // sort(T[], Comparator<? super T>
+    if(values.length != 0){
+      int end = values.length -1;
+      int cur = 1;
+      int border = 1; //first unsorted item
+      while(border != end + 1){
+        while((cur != 0) && (order.compare(values[cur], values[cur-1]) < 0)){
+          T temp = values[cur];
+          values[cur] = values[cur-1];
+          values[cur-1] = temp;
+          cur--;
+        }
+        border++;
+        cur = border;
+      }
+    } // sort(T[], Comparator<? super T>
+  }
 } // class InsertionSort
